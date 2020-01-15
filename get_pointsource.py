@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 """
 HISTORY:
     - 2020-01-15: created by Daniel Asmus
+    - 2020-01-15: explicitely import local gaussfit
 
 
 NOTES:
@@ -25,7 +26,7 @@ mpl.rcParams['ytick.direction'] = 'in'
 
 from astropy.modeling import models, fitting
 
-from gaussfitter import gaussfit
+from .gaussfitter import gaussfit as _gaussfit
 
 from .crop_image import crop_image as _crop_image
 from .get_background import get_background as _get_background
@@ -363,7 +364,7 @@ def get_pointsource(im, guesspos=None, searchbox=None, fitbox=None,
             minpars[3] = guesspos[0]-0.001
             maxpars[3] = guesspos[0]+0.001
 
-        res = gaussfit(fitim, err=None, params=guess, returnfitimage=True,
+        res = _gaussfit(fitim, err=None, params=guess, returnfitimage=True,
                        return_all=1, minpars=minpars, maxpars=maxpars,
                        limitedmin=limitedmin, limitedmax=limitedmax)
 

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 """
 HISTORY:
     - 2020-01-15: created by Daniel Asmus
+    - 2020-01-15: cleaned up packages
 
 
 NOTES:
@@ -17,40 +18,9 @@ TO-DO:
 
 
 import numpy as np
-import sys
-import time
-#import traceback
-# import pdb
-from collections import OrderedDict
-from collections import namedtuple
-from scipy import ndimage
-import scipy.signal
 # import scipy.stats
 from scipy.stats import binned_statistic
-from scipy.ndimage.filters import gaussian_filter
-import matplotlib.pyplot as plt
-from matplotlib.colors import LogNorm
-from matplotlib.ticker import LogFormatter
-from matplotlib.ticker import MultipleLocator
-from matplotlib.ticker import AutoMinorLocator
-import matplotlib as mpl
-mpl.rcParams['xtick.direction'] = 'in'
-mpl.rcParams['ytick.direction'] = 'in'
-from matplotlib.colors import colorConverter
-from matplotlib.patches import Arc
-from mpl_toolkits.axes_grid1 import ImageGrid
-# from IPython import embed
 
-from astropy.io import fits
-from astropy.io import ascii
-from astropy.table import Column
-
-from astropy.stats import sigma_clip
-
-from astropy.modeling import models, fitting
-from astropy.modeling import Fittable2DModel, Parameter
-
-from gaussfitter import gaussfit
 
 def radial_distr(im, cen=None, samp=None, maxrad=None, exclude_empty_bins=True,
                  binmeth='median'):
