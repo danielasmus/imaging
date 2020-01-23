@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__version__ = "1.0.1"
+__version__ = "1.1.0"
 
 """
 HISTORY:
     - 2020-01-15: created by Daniel Asmus
     - 2020-01-15: explicitely import local gaussfit
+    - 2020-01-23: rename from get_pointsource to find_source
 
 
 NOTES:
@@ -29,10 +30,10 @@ from astropy.modeling import models, fitting
 from .gaussfitter import gaussfit as _gaussfit
 
 from .crop_image import crop_image as _crop_image
-from .get_background import get_background as _get_background
+from .measure_bkg import measure_bkg as _measure_bkg
 
 
-def get_pointsource(im, guesspos=None, searchbox=None, fitbox=None,
+def find_source(im, guesspos=None, searchbox=None, fitbox=None,
                     guessmeth='max', smooth=0, searchsmooth=3,
                     guessFWHM=None, guessamp=None, guessbg=None,
                     method='fast', sign=1, verbose=False, fixFWHM=False,
@@ -260,7 +261,7 @@ def get_pointsource(im, guesspos=None, searchbox=None, fitbox=None,
                       exact=False)
 
     ignore_aper = np.min([3*guessFWHM, 0.8*np.max(s)])
-    bgval, bgstd = _get_background(bgim, ignore_aper=ignore_aper)
+    bgval, bgstd = _measure_bkg(bgim, ignore_aper=ignore_aper)
 
     if guessbg is None:
         guessbg = bgval

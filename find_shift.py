@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 """
 HISTORY:
     - 2020-01-15: created by Daniel Asmus
+    - 2020-01-23: rename from get_shift to find_shift
 
 
 NOTES:
@@ -20,11 +21,10 @@ import numpy as np
 import sys
 
 from .crop_image import crop_image as _crop_image
-from .get_pointsource import get_pointsource as _get_pointsource
+from .find_source import find_source as _find_source
 
 
-
-def get_shift(im, refpos=None, refim=None, guesspos=None, searchbox=None,
+def find_shift(im, refpos=None, refim=None, guesspos=None, searchbox=None,
               fitbox=None, method='fast', guessmeth='max', searchsmooth=3,
               refsign=1, guessFWHM=None, guessamp=None, guessbg=None,
               fixFWHM=False, minamp=0.01, maxamp=None, maxFWHM=None,
@@ -144,7 +144,7 @@ def get_shift(im, refpos=None, refim=None, guesspos=None, searchbox=None,
     else:
 
         # --- fit a Gaussian to find the center for the crop
-        params, perrs, fitim = _get_pointsource(im, searchbox=searchbox,
+        params, perrs, fitim = _find_source(im, searchbox=searchbox,
                                                fitbox=fitbox, method=method,
                                                verbose=verbose,
                                                guesspos=guesspos, sign=refsign,

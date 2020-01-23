@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 """
 HISTORY:
     - 2020-01-15: created by Daniel Asmus
+    - 2020-01-23: rename from get_background to measure_bkg
 
 
 NOTES:
@@ -23,7 +24,7 @@ mpl.rcParams['ytick.direction'] = 'in'
 
 
 
-def get_background(im, ignore_aper=None, method='median', binsize=0.1,
+def measure_bkg(im, ignore_aper=None, method='median', binsize=0.1,
                    show_plot=False, stdonly=False):
 
     """
